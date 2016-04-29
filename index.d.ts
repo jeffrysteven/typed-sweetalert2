@@ -1,14 +1,34 @@
 // Type definitions for SweetAlert 1.3.0
 
-declare var sweetAlert: SweetAlert2.SweetAlertStatic;
-declare var swal: SweetAlert2.SweetAlertStatic;
+/**
+ * SweetAlert automatically centers itself on the page and looks great no matter if you're using a desktop computer, mobile or tablet. An awesome replacement for JavaScript's alert.
+ * @param title The title of the modal.
+ */
+declare function swal(title: string): Promise<boolean>;
 
-declare module "sweetalert2" {
-    export = swal;
-}
+/**
+ * SweetAlert automatically centers itself on the page and looks great no matter if you're using a desktop computer, mobile or tablet. An awesome replacement for JavaScript's alert.
+ * @param title The title of the modal.
+ * @param text A description for the modal.
+ */
+declare function swal(title: string, text: string): Promise<boolean>;
 
-declare module SweetAlert2 {
-    interface SweetAlertOptions {
+/**
+ * SweetAlert automatically centers itself on the page and looks great no matter if you're using a desktop computer, mobile or tablet. An awesome replacement for JavaScript's alert.
+ * @param title The title of the modal.
+ * @param text A description for the modal.
+ * @param type The type of the modal. SweetAlert comes with 4 built-in types which will show a corresponding icon animation: "warning", "error", "success" and "info". You can also set it as "input" to get a prompt modal.
+ */
+declare function swal(title: string, text: string, type: 'warning' | 'error' | 'success' | 'info' | 'question'): Promise<boolean>;
+
+/**
+ * SweetAlert automatically centers itself on the page and looks great no matter if you're using a desktop computer, mobile or tablet. An awesome replacement for JavaScript's alert.
+ * @param callback The callback from the users action. The value is true or false if the user confirms or cancels the alert. Except for the type "input", then when the user confirms the alert, the argument contains the value of the input element.
+ */
+declare function swal(settings: swal.SweetAlertOptions): Promise<boolean>;
+
+declare namespace swal {
+    export interface SweetAlertOptions {
 
         /**
          * The title of the modal. It can either be added to the object under the key "title" or passed as the first parameter of the function.
@@ -49,43 +69,43 @@ declare module SweetAlert2 {
          * If set to false, the user can't dismiss the modal by clicking outside it.
          * Default: true
          */
-        allowOutsideClick?:boolean;
+        allowOutsideClick?: boolean;
 
         /**
          * If set to false, the user can't dismiss the modal by pressing the Escape key.
          * Default: true
          */
-        allowEscapeKey?:boolean;
+        allowEscapeKey?: boolean;
 
         /**
          * If set to false, a "Confirm"-button will not be shown. It can be useful when you're using html parameter for custom HTML description.
          * Default: true
          */
-        showConfirmButton?:boolean;
+        showConfirmButton?: boolean;
 
         /**
          * If set to true, a "Cancel"-button will be shown, which the user can click on to dismiss the modal.
          * Default: false
          */
-        showCancelButton?:boolean;
+        showCancelButton?: boolean;
 
         /**
          * Use this to change the text on the "Confirm"-button.
          * Default: "OK"
          */
-        confirmButtonText?:string;
+        confirmButtonText?: string;
 
         /**
          * Use this to change the text on the "Cancel"-button.
          * Default: "Cancel"
          */
-        cancelButtonText?:string;
+        cancelButtonText?: string;
 
         /**
          * Use this to change the background color of the "Confirm"-button (must be a HEX value).
          * Default: "#3085d6"
          */
-        confirmButtonColor?:string;
+        confirmButtonColor?: string;
 
         /**
          * Use this to change the background color of the "Cancel"-button (must be a HEX value).
@@ -179,44 +199,10 @@ declare module SweetAlert2 {
         background?: string;
     }
 
-
     /**
-     * Is true or false if the user confirms or cancels the alert. Except for the type "input", then when the user confirms the alert, this variable contains the value of the input element.
+     * If you end up using a lot of the same settings when calling SweetAlert, you can use setDefaults at the start of your program to set them once and for all!
      */
-    type CallbackArgument = boolean | string;
-
-    interface SweetAlertStatic {
-        /**
-         * SweetAlert automatically centers itself on the page and looks great no matter if you're using a desktop computer, mobile or tablet. An awesome replacement for JavaScript's alert.
-         * @param title The title of the modal.
-         */
-        (title: string): void;
-
-        /**
-         * SweetAlert automatically centers itself on the page and looks great no matter if you're using a desktop computer, mobile or tablet. An awesome replacement for JavaScript's alert.
-         * @param title The title of the modal.
-         * @param text A description for the modal.
-         */
-        (title: string, text: string): void;
-
-        /**
-         * SweetAlert automatically centers itself on the page and looks great no matter if you're using a desktop computer, mobile or tablet. An awesome replacement for JavaScript's alert.
-         * @param title The title of the modal.
-         * @param text A description for the modal.
-         * @param type The type of the modal. SweetAlert comes with 4 built-in types which will show a corresponding icon animation: "warning", "error", "success" and "info". You can also set it as "input" to get a prompt modal.
-         */
-        (title: string, text: string, type: 'warning' | 'error' | 'success' | 'info' | 'question'): void;
-
-        /**
-         * SweetAlert automatically centers itself on the page and looks great no matter if you're using a desktop computer, mobile or tablet. An awesome replacement for JavaScript's alert.
-         * @param callback The callback from the users action. The value is true or false if the user confirms or cancels the alert. Except for the type "input", then when the user confirms the alert, the argument contains the value of the input element.
-         */
-        (settings: SweetAlertOptions): Promise<boolean>;
-
-
-        /**
-         * If you end up using a lot of the same settings when calling SweetAlert, you can use setDefaults at the start of your program to set them once and for all!
-         */
-        setDefaults(settings: SweetAlertOptions): void;
-    }
+    export function setDefaults(settings: SweetAlertOptions): void;
 }
+
+export = swal;
