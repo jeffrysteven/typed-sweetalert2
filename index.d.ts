@@ -59,6 +59,24 @@ declare namespace swal {
          */
         customClass?: string;
 
+		/**
+         * Defines the type of input to show on the sweetalert
+         * Default: null
+         */
+        input?: string;
+
+		/**
+		 * If set to true, loader icon will display on confirmation
+		 * Default: false
+		 */
+		showLoaderOnConfirm?: boolean;
+
+		/**
+		 * Function which is executed before confirmation
+		 * Default: null
+		 */
+		preConfirm?: Function;
+
         /**
          * If set to false, modal CSS animation will be disabled.
          * Default: true
