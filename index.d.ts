@@ -220,7 +220,7 @@ declare namespace swal {
          * Input validator (Promise function)
          * Default: null
          */
-        inputValidator: Function;
+        inputValidator?: Function;
     }
 
     /**
