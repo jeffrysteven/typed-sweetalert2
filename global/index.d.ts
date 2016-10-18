@@ -197,6 +197,12 @@ declare module SweetAlert2 {
          * @type Default: "#fff"
          */
         background?: string;
+				
+		/**
+         * Input validator (Promise function)
+         * Default: null
+         */
+        inputValidator: Function;
     }
 
 
