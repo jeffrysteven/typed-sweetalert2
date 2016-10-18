@@ -202,7 +202,7 @@ declare module SweetAlert2 {
          * Input validator (Promise function)
          * Default: null
          */
-        inputValidator: Function;
+        inputValidator?: Function;
     }
 
 
